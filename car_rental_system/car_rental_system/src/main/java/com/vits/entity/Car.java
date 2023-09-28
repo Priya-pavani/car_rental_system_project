@@ -1,5 +1,8 @@
 package com.vits.entity;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.math.BigDecimal;
 import java.util.Set;
 
@@ -16,6 +19,7 @@ public class Car {
 	    private String registrationNumber;
 	    private BigDecimal dailyRentalRate;
 	    private int seat_count;
+	    
 	    public Long getId() {
 			return id;
 		}
@@ -109,6 +113,7 @@ public class Car {
 		}
 
 		@OneToMany(mappedBy = "car")
+		@JsonIgnore
 	    private Set<Rental> rentals;
 
 	    // Constructors, getters, setters, and other fields as needed

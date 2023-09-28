@@ -12,7 +12,8 @@ public class Rental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "car_id")
     private Car car;
 
@@ -67,13 +68,17 @@ public class Rental {
 	public void setRentalFee(BigDecimal rentalFee) {
 		this.rentalFee = rentalFee;
 	}
-	@ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
     private LocalDateTime rentalDateTime;
     private LocalDate returnDate;
     private BigDecimal rentalFee;
+
+    public Rental() {
+        // Default constructor
+    }
 
     // Constructors, getters, setters, and other fields as needed
 

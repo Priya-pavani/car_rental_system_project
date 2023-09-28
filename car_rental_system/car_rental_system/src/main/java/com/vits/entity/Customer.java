@@ -1,7 +1,14 @@
 package com.vits.entity;
 
-import javax.persistence.*;
 import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Customer {
@@ -84,15 +91,21 @@ public class Customer {
 		this.reservations = reservations;
 	}
 
+	public Customer() {
+		
+	}
+
 	private String firstName;
     private String lastName;
     private String email;
     private String phoneNumber;
 
     @OneToMany(mappedBy = "customer")
+    @JsonIgnore
     private Set<Rental> rentals;
 
     @OneToMany(mappedBy = "customer")
+    @JsonIgnore
     private Set<Reservation> reservations;
 
     // Constructors, getters, setters, and other fields as needed

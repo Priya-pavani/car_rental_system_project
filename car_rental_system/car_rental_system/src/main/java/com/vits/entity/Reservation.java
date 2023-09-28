@@ -61,7 +61,10 @@ public class Reservation {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    private LocalDate reservationDate;
+    public Reservation() {
+		
+	}
+	private LocalDate reservationDate;
     private boolean active;
 
     // Constructors, getters, setters, and other fields as needed
